@@ -1,0 +1,3 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3357
+
+Open NERD_Tree to your project folder, by typing :NERDtree /path/to/project or by using bookmarks. Place the cursor on a folder and type the letter m. In the menu that will pop up you will have the option "(s)earch directory". Select it by pressing s and type your pattern. If your search will yield results, you will see a window in the lower part of your screen, with all the results. Navigate with the keys and press <CR> to jump to a result. The file will be opened in the last working window.
