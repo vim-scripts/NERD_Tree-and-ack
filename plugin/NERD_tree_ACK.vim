@@ -19,12 +19,6 @@ endif
 
 let g:loaded_nerdtree_ack = 1
 
-if !exists("g:path_to_search_app")
-    let g:path_to_search_app = "ack"
-endif
-
-let g:path_to_search_app = g:path_to_search_app . "\\ -H\\ --nocolor\\ --nogroup"
-
 " add the new menu item via NERD_Tree's API
 call NERDTreeAddMenuItem({
     \ 'text': '(s)earch directory',
@@ -45,19 +39,13 @@ function! NERDTreeAck()
     " display first result in the last window
     wincmd w
 
-    let grepprg_bak = &grepprg
-    exec "set grepprg=" . g:path_to_search_app
-    exec 'silent! grep ' . pattern . ' ' . cd
-
-    let &grepprg=grepprg_bak
-    exec "redraw!"
+    exec 'Ack ' . pattern . ' ' . cd
 
     let hits = len(getqflist())
     if hits == 0
         echo 'Pattern ' . pattern . ' not found in ' . cd
     elseif hits > 1
         echo 'Found ' . hits . ' hits. Use the menu to navigate!'
-        botright copen
     endif
 
 endfunction
